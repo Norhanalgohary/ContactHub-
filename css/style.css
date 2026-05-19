@@ -39,6 +39,3 @@ body{
           color: oklch(0.551 0.027 264.364);
     }
 }
-input[placeholder]{
-    color: #1c7cdd;
-}
