@@ -39,3 +39,77 @@ body{
           color: oklch(0.551 0.027 264.364);
     }
 }
+.contact-name-phone{
+      h5{
+          font-weight: 600;
+          font-size: 16px;
+      }
+      p{
+            font-weight: 400;
+          font-size: 14px;
+          color: oklch(0.551 0.027 264.364);
+      }
+}
+.contact-email{
+      p{
+            font-weight: 400;
+          font-size: 14px;
+          color: oklch(0.551 0.027 264.364);
+      }
+}
+.contact-type{
+      font-weight: 500;
+          font-size: 11px;
+}
+.side-fav-emer{
+       h5{
+          font-weight: 600;
+          font-size: 16px;
+    }
+    h6{
+             font-weight: 400;
+          font-size: 11px;
+          color: oklch(0.551 0.027 264.364);
+    }
+}
+.modal-dialog-scrollable .modal-content {
+    max-height:100%;
+    scrollbar-width: none;
+    overflow: hidden;
+}
+.modal-body {
+    position: relative;
+    flex: 1 1 auto;
+    padding:0;
+}
+.form-select {
+    --bs-form-select-bg-img:none;
+    display: block;
+    width: 100%;
+    padding: .375rem 2.25rem .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--bs-body-color);
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: var(--bs-body-bg);
+    background-image: var(--bs-form-select-bg-img), var(--bs-form-select-bg-icon, none);
+    background-repeat: no-repeat;
+    background-position: right .75rem center;
+    background-size: 16px 12px;
+    border: var(--bs-border-width) solid var(--bs-border-color);
+    border-radius: var(--bs-border-radius);
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+textarea{
+resize: none;
+}
+@media (min-width: 576px) {
+    .modal-dialog {
+        max-width: 550px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+}

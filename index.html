@@ -32,21 +32,122 @@
                 </div>
             </a>
             <div class="d-flex align-items-center left-icons">
-                <button class="py-2 px-3 me-3"
+                <button type="button" class="py-2 px-3 me-3" data-bs-toggle="modal" data-bs-target="#exampleModal"
                     style="background-color: #752AFC; border-radius: 10px; border: none; color: white; font-weight: 600; font-size: 14px;">+
                     Add
                     Contact</button>
-                <i class="fa-solid fa-bell me-4 i-1" style="color: 
-oklch(0.551 0.027 264.364)
-"></i>
-                <i class="fa-solid fa-gear me-3 i-3" style="color: 
-oklch(0.551 0.027 264.364)"></i>
+                <div class="modal fade w-100 " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog modal-dialog-scrollable">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel"
+                                    style="font-size: 20px; font-weight: 700;">Add New Contact</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+
+                                <form class=" mx-auto" style="width: 85%;">
+                                    <div class="text-center">
+                                        <div
+                                            style="width: 90px; height: 90px; border-radius: 50%; background-color: #2266FC; position: relative; margin:auto;">
+                                            <i class="fa-solid fa-user fa-xl top-50 start-50 translate-middle"
+                                                style="color: rgb(255, 255, 255); position: absolute;"></i></div>
+                                        <div class="mb-3 ">
+                                           
+                                               
+                                                <input type="file" class="form-control w-25 mx-auto mt-3"
+                                                id="exampleInputfile" placeholder="Choose photo">
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="exampleInputName" class="form-label">Full Name<i
+                                                class="fa-solid fa-asterisk "
+                                                style="color: rgb(255, 0, 21);font-size: 6px;"></i></label>
+                                        <input type="text" class="form-control" id="exampleInputName"
+                                            placeholder="Enter full name">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="exampleInputPhone" class="form-label">Phone number<i
+                                                class="fa-solid fa-asterisk"
+                                                style="color: rgb(255, 0, 21); font-size: 6px;"></i></label>
+                                        <input type="number" class="form-control" id="exampleInputPhone"
+                                            placeholder="e.g., 01012345678">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="exampleInputEmail1" class="form-label">Email address</label>
+                                        <input type="email" class="form-control" id="exampleInputEmail1"
+                                            placeholder="name@example.com">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="exampleInputAddress" class="form-label">Address</label>
+                                        <input type="text" class="form-control" id="exampleInputAddress"
+                                            placeholder="Enter address">
+                                    </div>
+                                    <div class=" mb-3">
+                                        <label for="productCategoryInput" class="ms-1">Group</label>
+                                        <select class="form-select" aria-label="Default select example">
+                                            <option selected>Select a group</option>
+                                            <option value="1">Family</option>
+                                            <option value="2">Friends</option>
+                                            <option value="3">Work</option>
+                                            <option value="4">School</option>
+                                            <option value="5">Other</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="exampleInputArea" class="form-label">Notes</label>
+                                        <textarea name="exampleInputArea" id="exampleInputArea" class="form-control"
+                                            placeholder="Add notes about this contact"></textarea>
+                                    </div>
+                                    <div class="d-flex">
+                                        <div class="mb-3 form-check">
+                                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                            <label class="form-check-label" for="exampleCheck1"><i
+                                                    class="fa-solid fa-star me-1"
+                                                    style="color: rgb(255, 212, 59);"></i>Favorite</label>
+                                        </div>
+                                        <div class="mb-3 form-check">
+                                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                            <label class="form-check-label" for="exampleCheck1"><i
+                                                    class="fa-solid fa-heart-pulse me-1"
+                                                    style="color: rgb(234, 64, 78);"></i>Emergency</label>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-secondary mb-3" style="width: 49%;">Cancel</button>
+                                    <button type="submit" class="btn btn-primary mb-3" style="width: 49%;">Save contact</button>
+                                </form>
+                            </div>
+                            <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div> -->
+                        </div>
+                    </div>
+                </div>
+                <i class="fa-solid fa-bell me-4 i-1" style="color: oklch(0.551 0.027 264.364)"></i>
+                <i class="fa-solid fa-gear me-3 i-3" style="color: oklch(0.551 0.027 264.364)"></i>
                 <div style="width: 40px; height: 40px;  position: relative; border-radius: 10px;"><img
                         src="imgs/avatar-2.jpg" alt="" class=" translate-middle"
                         style="width: 95%; position: absolute; top: 50%; left: 50%; border-radius: 10px;"></div>
             </div>
         </div>
     </nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     <main class="bg-body-tertiary vh-100  ">
         <section class="container" style="width:80% ;">
@@ -100,8 +201,8 @@ oklch(0.551 0.027 264.364)"></i>
                 </div>
             </div>
             <div>
-                <div class="row ">
-                    <div class="col-9">
+                <div class="row d-flex justify-content-between">
+                    <div class="col-8">
                         <div class="body " ">
                             <div class=" all-contacts">
                             <h5>All Contacts</h5>
@@ -110,8 +211,9 @@ oklch(0.551 0.027 264.364)"></i>
 
 
                         <div class=" mb-3 rounded-4 my-4">
-                            <input type=" text" class="form-control rounded-3" id="floatingInput"
-                                style="padding: 0.75rem;" placeholder="    search by name,phone,or email.....">
+                            <input type=" text" class="form-control rounded-4" id="floatingInput"
+                                style="padding: 0.75rem; width: 95%;"
+                                placeholder="    search by name,phone,or email.....">
                             <!-- <label for="floatingInput" class="position-absolute"><i class="fa-solid fa-magnifying-glass me-3"
                                     style="color: #99A1AF; position: absolute; bottom:15px; left: 10px;"></i></label> -->
                         </div>
@@ -122,41 +224,43 @@ oklch(0.551 0.027 264.364)"></i>
                                 <div class="p-3">
                                     <div class="d-flex align-items-center">
                                         <div class="position-relative mx-2"
-                                            style="width: 50px; height: 50px; border-radius: 10px; background-color: #1965FE;">
+                                            style="width: 50px; height: 50px; border-radius: 10px; background-color: #E227CA;">
                                             <div>
-                                                 <div class="position-relative  mb-1  "
-                                    style="width: 20px; height: 20px; border-radius: 50%; background-color: #34fe19; margin-left: 2.4rem; ">
-                                    <i class="fa-solid fa-envelope position-absolute top-50 start-50 translate-middle fa-2xs "
-                                        style="color: rgb(255, 255, 255);"></i>
-                                </div>
-                            </div>
+                                                <div class="position-relative  mb-1  "
+                                                    style="width: 20px; height: 20px; border-radius: 50%; background-color: #FFB900; margin-left: 2.4rem; ">
+                                                    <i class="fa-solid fa-star position-absolute top-50 start-50 translate-middle fa-2xs "
+                                                        style="color: rgb(255, 255, 255);"></i>
+                                                </div>
+                                            </div>
                                             <div class="position-absolute top-50 start-50 translate-middle"
                                                 style="color: rgb(255, 255, 255);">NA</div>
-                                            <div> <div class="position-relative  mt-3 "
-                                    style="width: 20px; height: 20px; border-radius: 50%; background-color: #19feb9; margin-left: 2.4rem;">
-                                    <i class="fa-solid fa-envelope position-absolute top-50 start-50 translate-middle fa-2xs"
-                                        style="color: rgb(255, 255, 255);"></i>
-                                </div></div>
+                                            <div>
+                                                <div class="position-relative  mt-3 "
+                                                    style="width: 20px; height: 20px; border-radius: 50%; background-color: #FF2056; margin-left: 2.4rem;">
+                                                    <i class="fa-solid fa-heart-pulse position-absolute top-50 start-50 translate-middle fa-2xs"
+                                                        style="color: rgb(255, 255, 255);"></i>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="ms-3">
+                                        <div class="ms-3 contact-name-phone">
                                             <h5>Norhan Algohary</h5>
                                             <div class="position-relative "
-                                                style="width: 20px; height: 20px; border-radius: 5px; background-color: #1965FE;">
+                                                style="width: 22px; height: 22px; border-radius: 5px; background-color: #DBEAFE;">
                                                 <i class="fa-solid fa-phone position-absolute top-50 start-50 translate-middle fa-2xs"
-                                                    style="color: rgb(255, 255, 255);"></i>
+                                                    style="color:#2266FC;"></i>
                                                 <p style="margin-left: 1.9rem; margin-top: 2px;">01117528853</p>
                                             </div>
 
                                         </div>
                                     </div>
-                                    <div class="position-relative ms-2 mt-2 "
-                                        style="width: 20px; height: 20px; border-radius: 5px; background-color: #1965FE;">
+                                    <div class="position-relative ms-2 mt-2 contact-email"
+                                        style="width: 22px; height: 22px; border-radius: 5px; background-color: #EDE9FE;">
                                         <i class="fa-solid fa-envelope position-absolute top-50 start-50 translate-middle fa-2xs"
-                                            style="color: rgb(255, 255, 255);"></i>
+                                            style="color:#7F22FE;"></i>
                                         <p style="margin-left: 1.9rem; margin-top: 2px;">norhanalgohary500@gmail.com</p>
                                     </div>
 
-                                    <div class="d-flex mt-2">
+                                    <div class="d-flex mt-2 contact-type">
                                         <div class="p-1 me-1 rounded-2"
                                             style="background-color: #FEF3C6; color: #BB5026;">school</div>
                                         <div class="p-1 rounded-2" style="background-color: #FFF1F2; color: #EC003F;">
@@ -165,39 +269,39 @@ oklch(0.551 0.027 264.364)"></i>
                                     </div>
                                 </div>
                                 <div
-                                    class="bg-body-tertiary p-2 rounded-bottom-4 d-flex justify-content-between p-2 px-3">
+                                    class="bg-body-tertiary p-2 rounded-bottom-4 d-flex justify-content-between p-3 px-3">
                                     <div class="d-flex">
                                         <div class="position-relative me-2  "
-                                            style="width: 20px; height: 20px; border-radius: 5px; background-color: #1965FE;">
-                                            <i class="fa-solid fa-envelope position-absolute top-50 start-50 translate-middle fa-2xs"
-                                                style="color: rgb(255, 255, 255);"></i>
+                                            style="width: 30px; height: 30px; border-radius: 5px; background-color: #D0FAE5;">
+                                            <i class="fa-solid fa-phone position-absolute top-50 start-50 translate-middle fa-sm"
+                                                style="color: #23A97C;"></i>
                                         </div>
                                         <div class="position-relative   "
-                                            style="width: 20px; height: 20px; border-radius: 5px; background-color: #1965FE;">
-                                            <i class="fa-solid fa-envelope position-absolute top-50 start-50 translate-middle fa-2xs"
-                                                style="color: rgb(255, 255, 255);"></i>
+                                            style="width: 30px; height: 30px; border-radius: 5px; background-color: #EDE9FE;">
+                                            <i class="fa-solid fa-envelope position-absolute top-50 start-50 translate-middle fa-sm"
+                                                style="color: #7F22FE;"></i>
                                         </div>
                                     </div>
                                     <div class="d-flex">
                                         <div class="position-relative me-2  "
-                                            style="width: 20px; height: 20px; border-radius: 5px; background-color: #1965FE;">
-                                            <i class="fa-solid fa-envelope position-absolute top-50 start-50 translate-middle fa-2xs"
-                                                style="color: rgb(255, 255, 255);"></i>
+                                            style="width: 30px; height: 30px; border-radius: 5px; background-color: #FEF3C6;">
+                                            <i class="fa-solid fa-star position-absolute top-50 start-50 translate-middle fa-sm"
+                                                style="color: #FFB900;"></i>
                                         </div>
                                         <div class="position-relative me-2  "
-                                            style="width: 20px; height: 20px; border-radius: 5px; background-color: #1965FE;">
-                                            <i class="fa-solid fa-envelope position-absolute top-50 start-50 translate-middle fa-2xs"
-                                                style="color: rgb(255, 255, 255);"></i>
+                                            style="width: 30px; height: 30px; border-radius: 5px; background-color: #FFEFF0;">
+                                            <i class="fa-solid fa-heart-pulse position-absolute top-50 start-50 translate-middle fa-sm"
+                                                style="color: #FF2056;"></i>
                                         </div>
                                         <div class="position-relative me-2  "
-                                            style="width: 20px; height: 20px; border-radius: 5px; background-color: #1965FE;">
-                                            <i class="fa-solid fa-envelope position-absolute top-50 start-50 translate-middle fa-2xs"
-                                                style="color: rgb(255, 255, 255);"></i>
+                                            style="width: 30px; height: 30px; border-radius: 5px; ">
+                                            <i class="fa-solid fa-pen position-absolute top-50 start-50 translate-middle fa-sm"
+                                                style="color: rgb(111, 111, 111);"></i>
                                         </div>
                                         <div class="position-relative   "
-                                            style="width: 20px; height: 20px; border-radius: 5px; background-color: #1965FE;">
-                                            <i class="fa-solid fa-envelope position-absolute top-50 start-50 translate-middle fa-2xs"
-                                                style="color: rgb(255, 255, 255);"></i>
+                                            style="width: 30px; height: 30px; border-radius: 5px;">
+                                            <i class="fa-solid fa-envelope position-absolute top-50 start-50 translate-middle fa-sm"
+                                                style="color: rgb(111, 111, 111);"></i>
                                         </div>
 
                                     </div>
@@ -209,16 +313,92 @@ oklch(0.551 0.027 264.364)"></i>
 
                 </div>
 
-                <div class="col-3 mb-3">
-                    <div class="body rounded-4 shadow  mb-3" style="background-color: rgb(255, 255, 255);">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae reprehenderit quae eaque
-                            nulla odit doloribus aperiam labore. Obcaecati nostrum alias sit? Pariatur numquam
-                            excepturi eveniet, accusantium quisquam vero ex! Molestiae!</p>
+                <div class=" mb-3" style="width: 30%;">
+                    <div class="body rounded-4 shadow  mb-3 " style="background-color: rgb(255, 255, 255);  ">
+
+                        <div class="p-3  rounded-top-4" style="background-color: #FFF7ED;">
+                            <div class="d-flex align-items-center side-fav-emer">
+                                <div class="position-relative mx-2"
+                                    style="width: 40px; height: 40px; border-radius: 10px; background-color: #FF8500;">
+                                    <i class="fa-solid fa-star position-absolute top-50 start-50 translate-middle"
+                                        style="color: rgb(255, 255, 255);"></i>
+                                </div>
+                                <div>
+                                    <h5 class="mb-1">Favorites</h5>
+                                    <h6>Quick access to starred contacts</h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-white p-2 rounded-bottom-4 d-flex justify-content-between p-3 px-3">
+                            <div class="d-flex align-items-center">
+                                <div class="position-relative mx-2"
+                                    style="width: 50px; height: 50px; border-radius: 10px; background-color: #E227CA;">
+
+                                    <div class="position-absolute top-50 start-50 translate-middle"
+                                        style="color: rgb(255, 255, 255);">NA</div>
+
+                                </div>
+                                <div class=" contact-name-phone">
+                                    <h5>Norhan Algohary</h5>
+                                    <p style=" margin-top: 2px;">01117528853</p>
+
+
+                                </div>
+                            </div>
+                            <div class="position-relative mt-4"
+                                style="width: 30px; height: 30px; border-radius: 5px; background-color: #d0fae5;">
+                                <i class="fa-solid fa-phone position-absolute top-50 start-50 translate-middle fa-2xs"
+                                    style="color:#00BC7D;"></i>
+
+                            </div>
+                        </div>
+
+
+
+
                     </div>
-                    <div class="body rounded-4 shadow" style="background-color: rgb(255, 255, 255);">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae reprehenderit quae eaque
-                            nulla odit doloribus aperiam labore. Obcaecati nostrum alias sit? Pariatur numquam
-                            excepturi eveniet, accusantium quisquam vero ex! Molestiae!</p>
+                    <div class="body rounded-4 shadow" style="background-color: rgb(255, 255, 255);  ">
+                        <div class="p-3  rounded-top-4" style="background-color: #FEF2F2;">
+
+                            <div class="d-flex align-items-center side-fav-emer">
+                                <div class="position-relative mx-2"
+                                    style="width: 40px; height: 40px; border-radius: 10px; background-color: #F3073A;">
+                                    <i class="fa-solid fa-heart-pulse position-absolute top-50 start-50 translate-middle"
+                                        style="color: rgb(255, 255, 255);"></i>
+                                </div>
+                                <div>
+                                    <h5 class="mb-1">Emergency</h5>
+                                    <h6>Important contacts for urgent calls</h6>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="bg-white p-2 rounded-bottom-4 d-flex justify-content-between p-3 px-3">
+
+                            <div class="d-flex align-items-center ">
+                                <div class="position-relative mx-2"
+                                    style="width: 50px; height: 50px; border-radius: 10px; background-color: #E227CA;">
+
+                                    <div class="position-absolute top-50 start-50 translate-middle"
+                                        style="color: rgb(255, 255, 255);">NA</div>
+
+                                </div>
+                                <div class=" contact-name-phone">
+                                    <h5>Norhan Algohary</h5>
+                                    <p style=" margin-top: 2px;">01117528853</p>
+
+
+                                </div>
+                            </div>
+                            <div class="position-relative mt-4 "
+                                style="width: 30px; height: 30px; border-radius: 5px; background-color: #FFE4E6;">
+                                <i class="fa-solid fa-phone position-absolute top-50 start-50 translate-middle fa-2xs"
+                                    style="color:#FF2056;"></i>
+
+                            </div>
+
+                        </div>
+
                     </div>
                 </div>
 
