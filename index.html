@@ -110,20 +110,17 @@
                                                     style="color: rgb(255, 212, 59);"></i>Favorite</label>
                                         </div>
                                         <div class="mb-3 form-check">
-                                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                            <label class="form-check-label" for="exampleCheck1"><i
+                                            <input type="checkbox" class="form-check-input " id="exampleCheck2">
+                                            <label class="form-check-label" for="exampleCheck2"><i
                                                     class="fa-solid fa-heart-pulse me-1"
                                                     style="color: rgb(234, 64, 78);"></i>Emergency</label>
                                         </div>
                                     </div>
-                                    <button type="submit" class="btn btn-secondary mb-3" style="width: 49%;">Cancel</button>
-                                    <button type="submit" class="btn btn-primary mb-3" style="width: 49%;">Save contact</button>
+                                    <button type="button" class="btn btn-secondary mb-3" style="width: 49%;">Cancel</button>
+                                    <button onclick="addContact()"  type="button" class="btn btn-primary mb-3 " style="width: 49%;">Save contact</button>
                                 </form>
                             </div>
-                            <!-- <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div> -->
+                         
                         </div>
                     </div>
                 </div>
@@ -153,7 +150,7 @@
         <section class="container" style="width:80% ;">
             <div>
                 <div class="row info-cards">
-                    <div class="col-4 my-4">
+                    <div class="col-4 my-4 tot-card">
                         <div class="body rounded-4 shadow p-3" style="background-color: #ffffff;">
                             <div class="d-flex align-items-center">
                                 <div class="position-relative mx-2"
@@ -168,7 +165,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-4  my-4">
+                    <div class="col-4  my-4 fav-card">
                         <div class="body rounded-4 shadow p-3" style="background-color: #ffffff;">
                             <div class="d-flex align-items-center">
                                 <div class="position-relative mx-2"
@@ -183,7 +180,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-4  my-4">
+                    <div class="col-4  my-4 eme-card">
                         <div class="body rounded-4 shadow p-3" style="background-color: #ffffff;">
                             <div class="d-flex align-items-center">
                                 <div class="position-relative mx-2"
@@ -219,9 +216,9 @@
                         </div>
 
 
-                        <div class="col-6">
+                        <div class="col-6 cards">
                             <div class="body rounded-4 shadow " style="background-color: #ffffff;">
-                                <div class="p-3">
+                                <div class="p-3 ">
                                     <div class="d-flex align-items-center">
                                         <div class="position-relative mx-2"
                                             style="width: 50px; height: 50px; border-radius: 10px; background-color: #E227CA;">
@@ -242,7 +239,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="ms-3 contact-name-phone">
+                                        <div class="ms-3 contact-name-phone ">
                                             <h5>Norhan Algohary</h5>
                                             <div class="position-relative "
                                                 style="width: 22px; height: 22px; border-radius: 5px; background-color: #DBEAFE;">
@@ -329,8 +326,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="bg-white p-2 rounded-bottom-4 d-flex justify-content-between p-3 px-3">
-                            <div class="d-flex align-items-center">
+                        <div class="bg-white p-2 rounded-bottom-4 d-flex justify-content-between p-3 px-3 fav-side">
+                            <div class="d-flex align-items-center ">
                                 <div class="position-relative mx-2"
                                     style="width: 50px; height: 50px; border-radius: 10px; background-color: #E227CA;">
 
@@ -373,7 +370,7 @@
                             </div>
 
                         </div>
-                        <div class="bg-white p-2 rounded-bottom-4 d-flex justify-content-between p-3 px-3">
+                        <div class="bg-white p-2 rounded-bottom-4 d-flex justify-content-between p-3 px-3  eme-side">
 
                             <div class="d-flex align-items-center ">
                                 <div class="position-relative mx-2"
