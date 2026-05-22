@@ -69,6 +69,7 @@
                                                 style="color: rgb(255, 0, 21);font-size: 6px;"></i></label>
                                         <input type="text" class="form-control" id="exampleInputName"
                                             placeholder="Enter full name">
+                                            <div class="alert d-none nameAlert p-0"><p class="m-0 text-danger p-0" style="font-size: 12px;">Name should contain only letters and spaces (2-50 characters)</p></div>
                                     </div>
                                     <div class="mb-3">
                                         <label for="exampleInputPhone" class="form-label">Phone number<i
@@ -76,11 +77,13 @@
                                                 style="color: rgb(255, 0, 21); font-size: 6px;"></i></label>
                                         <input type="number" class="form-control" id="exampleInputPhone"
                                             placeholder="e.g., 01012345678">
+                                            <div class="alert d-none phoneAleart p-0"><p class="m-0 text-danger p-0" style="font-size: 12px;">Please enter a valid Egyptian phone number</p></div>
                                     </div>
                                     <div class="mb-3">
                                         <label for="exampleInputEmail1" class="form-label">Email address</label>
                                         <input type="email" class="form-control" id="exampleInputEmail1"
                                             placeholder="name@example.com">
+                                            <div class="alert d-none emailAleart p-0"><p class="m-0 text-danger p-0" style="font-size: 12px;">Please enter a valid email address</p></div>
                                     </div>
                                     <div class="mb-3">
                                         <label for="exampleInputAddress" class="form-label">Address</label>
@@ -89,7 +92,7 @@
                                     </div>
                                     <div class=" mb-3">
                                         <label for="productCategoryInput" class="ms-1">Group</label>
-                                        <select class="form-select" aria-label="Default select example">
+                                        <select class="form-select" aria-label="Default select example" id="contact-Categor">
                                             <option selected>Select a group</option>
                                             <option value="1">Family</option>
                                             <option value="2">Friends</option>
@@ -119,7 +122,7 @@
                                     </div>
                                     <button onclick="closeForm()" type="button" class="btn btn-secondary mb-3"
                                         style="width: 49%;">Cancel</button>
-                                    <button onclick="addContact()" type="button" class="btn btn-primary mb-3 "
+                                    <button onclick="saveUpdate()" type="button" class="btn btn-primary mb-3 "
                                         style="width: 49%;">Save contact</button>
                                 </form>
                             </div>
@@ -210,8 +213,8 @@
                         </div>
 
                         <div class="row ">
-                        <div class="d-flex flex-wrap cards">
-                            <div class="body rounded-4 shadow col-6 " style="background-color: #ffffff;">
+                        <div class="d-flex flex-wrap cards ">
+                            <div class="body rounded-4 shadow col-6 " style="background-color: #ffffff; ">
                                 <div class="p-3 ">
                                     <div class="d-flex align-items-center">
                                         <div class="position-relative mx-2"
@@ -254,6 +257,15 @@
                                     <div class="d-flex mt-2 contact-type">
                                         <div class="p-1 me-1 rounded-2"
                                             style="background-color: #FEF3C6; color: #BB5026;">school</div>
+                                             <div class="p-1 me-1 rounded-2"
+                                            style="background-color: #DBEAFE; color: #006eff;">Family</div>
+                                             <div class="p-1 me-1 rounded-2"
+                                            style="background-color: #DBFCE7; color: #2A8436;">Friends</div>
+                                             <div class="p-1 me-1 rounded-2"
+                                            style="background-color: #F3E8FF; color: #8258EB;">Work</div>
+                                             <div class="p-1 me-1 rounded-2"
+                                            style="background-color: #F3F4F6; color: #36415D;">Other</div>
+
                                         <div class="p-1 rounded-2" style="background-color: #FFF1F2; color: #EC003F;">
                                             <i class="fa-solid fa-heart-pulse " style="color: #EC003F;"></i>Emergency
                                         </div>
@@ -276,7 +288,7 @@
                                     <div class="d-flex">
                                         <div class="position-relative me-2  "
                                             style="width: 30px; height: 30px; border-radius: 5px; background-color: #FEF3C6;">
-                                            <i class="fa-solid fa-star position-absolute top-50 start-50 translate-middle fa-sm"
+                                            <i  class="fa-solid fa-star position-absolute top-50 start-50 translate-middle fa-sm"
                                                 style="color: #FFB900;"></i>
                                         </div>
                                         <div class="position-relative me-2  "

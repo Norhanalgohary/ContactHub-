@@ -18,13 +18,20 @@ var allcontacts = JSON.parse(localStorage.getItem("allcontacts")) || [];
 var modal=document.getElementById("exampleModal")
 var form = document.getElementById("form")
 var searchInput = document.getElementById("searchinput")
+var contactCategory = document.getElementById("contact-Categor")
+var currentIndex = -1;
+var nameAleart = document.querySelector(".nameAlert")
+var phoneAleart = document.querySelector(".phoneAleart")
+var emailAleart = document.querySelector(".emailAleart")
+
 
 window.onload = function () {
   displayContacts(allcontacts);
+  displayFav();
+  displayeme();
   renderFavSide();
   renderEmeSide();
 };
-
 function addContact() {
 
   console.log("hiiiiiiiiiii")
@@ -34,11 +41,15 @@ function addContact() {
     email: inputEmail.value,
     address: inputAddress.value,
     note: inputNote.value,
+    category: contactCategory.value,
     fav: inputfav.checked,
     eme: inputeme.checked,
+    
   }
-  allcontacts.push(contact)
-  localStorage.setItem("allcontacts",JSON.stringify(allcontacts))
+
+  allcontacts.push(contact);
+
+  localStorage.setItem("allcontacts", JSON.stringify(allcontacts));
 
   var card1 = `
   <div class="body rounded-4 shadow p-3" style="background-color: #ffffff;">
@@ -63,43 +74,71 @@ function addContact() {
                             <h6>Manage and organize your ${allcontacts.length} contacts</h6>
                         </div>`
     textCard.innerHTML = text;
- 
+
 displayContacts(allcontacts);
 sweatAlert(contact)
   addToFav( contact)
 addFavSide(contact)
   addToEme(allcontacts , contact)
   addEmeSide(contact)
+   form.reset();
 
 }
 function displayContacts(list) {
   cards.innerHTML = "";
-
+var card1 = `
+  <div class="body rounded-4 shadow p-3" style="background-color: #ffffff;">
+                            <div class="d-flex align-items-center">
+                                <div class="position-relative mx-2"
+                                    style="width: 50px; height: 50px; border-radius: 10px; background-color: #1965FE;">
+                                    <i class="fa-solid fa-users position-absolute top-50 start-50 translate-middle"
+                                        style="color: rgb(255, 255, 255);"></i>
+                                </div>
+                                <div>
+                                    <h5>Total</h5>
+                                    <h6>${allcontacts.length}</h6>
+                                </div>
+                            </div>
+                        </div>
+  `
+  totCard.innerHTML = card1;
+  
   for (let i = 0; i < allcontacts.length; i++) {
     let contact = allcontacts[i];
-
+   
     cards.innerHTML += `
-       <div class="body rounded-4 shadow  col-6  " style="background-color: #ffffff;">
+       <div class="body rounded-4 shadow  col-6  " style="background-color: #ffffff; margin="10px">
                                 <div class="p-3">
                                     <div class="d-flex align-items-center">
                                         <div class="position-relative mx-2"
                                             style="width: 50px; height: 50px; border-radius: 10px; background-color: #E227CA;">
                                             <div>
-                                                <div class="position-relative  mb-1  "
+                                            ${contact.fav?`<div class="position-relative  mb-1  "
                                                     style="width: 20px; height: 20px; border-radius: 50%; background-color: #FFB900; margin-left: 2.4rem; ">
                                                     <i class="fa-solid fa-star position-absolute top-50 start-50 translate-middle fa-2xs "
                                                         style="color: rgb(255, 255, 255);"></i>
-                                                </div>
+                                                </div>`:`<div class="position-relative  mb-1 d-none "
+                                                    style="width: 20px; height: 20px; border-radius: 50%; background-color: #FFB900; margin-left: 2.4rem; ">
+                                                    <i class="fa-solid fa-star position-absolute top-50 start-50 translate-middle fa-2xs "
+                                                        style="color: rgb(255, 255, 255);"></i>
+                                                </div>`}
+                                                
                                             </div>
                                             <div class="position-absolute top-50 start-50 translate-middle"
-                                                style="color: rgb(255, 255, 255);">NA</div>
+                                                style="color: rgb(255, 255, 255);">${contact.name.charAt(0).toUpperCase()}</div>
                                             <div>
-                                                <div class="position-relative  mt-3 "
+                                            ${contact.eme?` <div class="position-relative  mt-3 "
                                                     style="width: 20px; height: 20px; border-radius: 50%; background-color: #FF2056; margin-left: 2.4rem;">
                                                     <i class="fa-solid fa-heart-pulse position-absolute top-50 start-50 translate-middle fa-2xs"
                                                         style="color: rgb(255, 255, 255);"></i>
                                                 </div>
-                                            </div>
+                                            </div>`:`<div class="position-relative  mt-3 d-none"
+                                                    style="width: 20px; height: 20px; border-radius: 50%; background-color: #FF2056; margin-left: 2.4rem;">
+                                                    <i class="fa-solid fa-heart-pulse position-absolute top-50 start-50 translate-middle fa-2xs"
+                                                        style="color: rgb(255, 255, 255);"></i>
+                                                </div>
+                                            </div>`}
+                                               
                                         </div>
                                         <div class="ms-3 contact-name-phone">
                                             <h5>${list[i].name}</h5>
@@ -120,11 +159,28 @@ function displayContacts(list) {
                                     </div>
 
                                     <div class="d-flex mt-2 contact-type">
-                                        <div class="p-1 me-1 rounded-2"
-                                            style="background-color: #FEF3C6; color: #BB5026;">school</div>
-                                        <div class="p-1 rounded-2" style="background-color: #FFF1F2; color: #EC003F;">
+                                    ${contact.category=="1"?` <div class="p-1 me-1 rounded-2"
+                                            style="background-color: #DBEAFE; color: #006eff;">Family</div>`:` <div class="p-1 me-1 rounded-2 d-none"
+                                            style="background-color: #DBEAFE; color: #006eff;">Family</div>`}
+                                    ${contact.category=="2"?` <div class="p-1 me-1 rounded-2"
+                                            style="background-color: #DBFCE7; color: #2A8436;">Friends</div>`:` <div class="p-1 me-1 rounded-2 d-none"
+                                            style="background-color: #DBFCE7; color: #2A8436;">Friends</div>`}
+                                    ${contact.category=="3"?`<div class="p-1 me-1 rounded-2"
+                                            style="background-color: #F3E8FF; color: #8258EB;">Work</div>`:`<div class="p-1 me-1 rounded-2 d-none"
+                                            style="background-color: #F3E8FF; color: #8258EB;">Work</div>`}
+                                    ${contact.category=="4"?`<div class="p-1 me-1 rounded-2"
+                                            style="background-color: #FEF3C6; color: #BB5026;">school</div>`:`<div class="p-1 me-1 rounded-2 d-none"
+                                            style="background-color: #FEF3C6; color: #BB5026;">school</div>`}
+                                             ${contact.category=="5"?`<div class="p-1 me-1 rounded-2"
+                                            style="background-color: #F3F4F6; color: #36415D;">Other</div>`:`<div class="p-1 me-1 rounded-2 d-none"
+                                            style="background-color: #F3F4F6; color: #36415D;">Other</div>`}
+                                        
+                                            ${contact.eme?` <div class="p-1 rounded-2" style="background-color: #FFF1F2; color: #EC003F;">
                                             <i class="fa-solid fa-heart-pulse " style="color: #EC003F;"></i>Emergency
-                                        </div>
+                                        </div>`:` <div class="p-1 rounded-2 d-none" style="background-color: #FFF1F2; color: #EC003F;">
+                                            <i class="fa-solid fa-heart-pulse " style="color: #EC003F;"></i>Emergency
+                                        </div>`}
+                                      
                                     </div>
                                 </div>
                                 <div
@@ -144,7 +200,7 @@ function displayContacts(list) {
                                     <div class="d-flex">
                                         <div class="position-relative me-2  "
                                             style="width: 30px; height: 30px; border-radius: 5px; background-color: #FEF3C6;">
-                                            <i class="fa-solid fa-star position-absolute top-50 start-50 translate-middle fa-sm"
+                                            <i  class="fa-solid fa-star position-absolute top-50 start-50 translate-middle fa-sm"
                                                 style="color: #FFB900;"></i>
                                         </div>
                                         <div class="position-relative me-2  "
@@ -180,12 +236,12 @@ function sweatAlert(){
     modal.hide();
   });
 }
-function addToFav() {
+function addToFav(contact) {
    
   isChecked1 = inputfav.checked;
   console.log("hiiiiiiiiiii")
-   
-  if (isChecked1) {
+    localStorage.setItem("allcontacts", JSON.stringify(allcontacts));
+  if (contact.fav) {
      
     var card2 = `
    <div class="body rounded-4 shadow p-3" style="background-color: #ffffff;">
@@ -197,80 +253,38 @@ function addToFav() {
                                 </div>
                                 <div>
                                     <h5>Favorites</h5>
-                                    <h6>${allcontacts.length}</h6>
+                                    <h6>${allcontacts.filter(c => c.fav).length}</h6>
                                 </div>
                             </div>
                         </div>
   `
     favCard.innerHTML = card2;
-      
-
+      // localStorage.setItem("favCard",JSON.stringify(favCard))
+   
   }
-//  function addToFav(contact) {
-// inputfav.checked = contact.fav;
-//   if (contact.fav) {
-
-//     var card2 = `
-//       <div class="body rounded-4 shadow p-3" style="background-color: #ffffff;">
-//         <div class="d-flex align-items-center">
-
-//           <div class="position-relative mx-2"
-//             style="width: 50px; height: 50px; border-radius: 10px; background-color: #FF8500;">
-
-//             <i class="fa-solid fa-star position-absolute top-50 start-50 translate-middle"
-//               style="color: white;"></i>
-
-//           </div>
-
-//           <div>
-//             <h5>Favorites</h5>
-//             <h6>${allcontacts.filter(c => c.fav).length}</h6>
-//           </div>
-
-//         </div>
-//       </div>
-//     `;
-
-//     favCard.innerHTML = card2;
-//   }
-// }
-
 }
-// function addFavSide() {
-//   isChecked1 = inputfav.checked;
-//   console.log("hiiiiiiiiiii")
-
-//   if (isChecked1) {
-//     var side1 = `   <div class="d-flex align-items-center justify-content-between ">
-//                                 <div class="d-flex align-items-center">
-//                                 <div class="position-relative mx-2"
-//                                     style="width: 50px; height: 50px; border-radius: 10px; background-color: #E227CA;">
-
-//                                     <div class="position-absolute top-50 start-50 translate-middle"
-//                                         style="color: rgb(255, 255, 255);">NA</div>
-
-//                                 </div>
-//                                 <div class=" contact-name-phone">
-//                                     <h5>Norhan Algohary</h5>
-//                                     <p style=" margin-top: 2px;">01117528853</p>
-
-
-//                                 </div></div>
-//                                 <div class="position-relative mt-4 "
-//                                 style="width: 30px; height: 30px; border-radius: 5px; background-color: #d0fae5;">
-//                                 <i class="fa-solid fa-phone position-absolute top-50 start-50 translate-middle fa-2xs"
-//                                     style="color:#00BC7D;"></i>
-
-//                             </div>
-//                             </div>
-                            
-//                            `
-//     favSide.innerHTML += side1;
-//   }
-// }
+function displayFav(){
+  var favCount = allcontacts.filter(c => c.fav).length;
+   var card2 = `
+   <div class="body rounded-4 shadow p-3" style="background-color: #ffffff;">
+                            <div class="d-flex align-items-center">
+                                <div class="position-relative mx-2"
+                                    style="width: 50px; height: 50px; border-radius: 10px; background-color: #FF8500;">
+                                    <i class="fa-solid fa-star position-absolute top-50 start-50 translate-middle"
+                                        style="color: rgb(255, 255, 255);"></i>
+                                </div>
+                                <div>
+                                    <h5>Favorites</h5>
+                                    <h6>${favCount}</h6>
+                                </div>
+                            </div>
+                        </div>
+  `
+    favCard.innerHTML = card2;
+}
 function addFavSide(contact) {
 
-  if (!contact.fav) return;
+  if (contact.fav) {
 
   favSide.innerHTML += `
     <div class="d-flex align-items-center justify-content-between">
@@ -302,7 +316,7 @@ function addFavSide(contact) {
       </div>
 
     </div>
-  `;
+  `};
 }
 function renderFavSide() {
 
@@ -313,10 +327,10 @@ function renderFavSide() {
   }
 }
 function addToEme(contact) {
-  isChecked2 = inputeme.checked;
+  contact.eme = inputeme.checked;
   console.log("hiiiiiiiiiii")
-
-  if (isChecked2) {
+localStorage.setItem("allcontacts", JSON.stringify(allcontacts));
+  if (contact.eme) {
     var card3 = `
   <div class="body rounded-4 shadow p-3" style="background-color: #ffffff;">
                             <div class="d-flex align-items-center">
@@ -327,7 +341,7 @@ function addToEme(contact) {
                                 </div>
                                 <div>
                                     <h5>Emergency</h5>
-                                    <h6>${allcontacts.length}</h6>
+                                    <h6>${allcontacts.filter(f => f.eme).length}</h6>
                                 </div>
                             </div>
                         </div>
@@ -335,24 +349,42 @@ function addToEme(contact) {
     emeCard.innerHTML = card3;
   }
 }
-
-function addEmeSide() {
+function displayeme(){
+  var emeCount = allcontacts.filter(c => c.eme).length;
+    var card3 = `
+  <div class="body rounded-4 shadow p-3" style="background-color: #ffffff;">
+                            <div class="d-flex align-items-center">
+                                <div class="position-relative mx-2"
+                                    style="width: 50px; height: 50px; border-radius: 10px; background-color: #F3073A;">
+                                    <i class="fa-solid fa-heart-pulse position-absolute top-50 start-50 translate-middle"
+                                        style="color: rgb(255, 255, 255);"></i>
+                                </div>
+                                <div>
+                                    <h5>Emergency</h5>
+                                    <h6>${emeCount}</h6>
+                                </div>
+                            </div>
+                        </div>
+  `
+    emeCard.innerHTML = card3;
+}
+function addEmeSide(contact) {
   isChecked2 = inputeme.checked;
   console.log("hiiiiiiiiiii")
 
-  if (isChecked2) {
+  if (contact.eme) {
     var side2 = `    <div class="d-flex align-items-center justify-content-between ">
                                 <div class="d-flex align-items-center">
                                 <div class="position-relative mx-2"
                                     style="width: 50px; height: 50px; border-radius: 10px; background-color: #E227CA;">
 
                                     <div class="position-absolute top-50 start-50 translate-middle"
-                                        style="color: rgb(255, 255, 255);">NA</div>
+                                        style="color: rgb(255, 255, 255);">${contact.name.charAt(0).toUpperCase()}</div>
 
                                 </div>
                                 <div class=" contact-name-phone">
-                                    <h5>Norhan Algohary</h5>
-                                    <p style=" margin-top: 2px;">01117528853</p>
+                                    <h5>${contact.name}</h5>
+                                    <p style=" margin-top: 2px;">${contact.phone}</p>
 
 
                                 </div></div>
@@ -380,62 +412,19 @@ function closeForm(){
      modal = bootstrap.Modal.getInstance(modal);
     modal.hide();
 }
-// function deletContact(index){
-//     console.log("hiiiiiiiiiiiiiiinona")
-//     var card1 = `
-//   <div class="body rounded-4 shadow p-3" style="background-color: #ffffff;">
-//                             <div class="d-flex align-items-center">
-//                                 <div class="position-relative mx-2"
-//                                     style="width: 50px; height: 50px; border-radius: 10px; background-color: #1965FE;">
-//                                     <i class="fa-solid fa-users position-absolute top-50 start-50 translate-middle"
-//                                         style="color: rgb(255, 255, 255);"></i>
-//                                 </div>
-//                                 <div>
-//                                     <h5>Total</h5>
-//                                     <h6>${(allcontacts.length)-1}</h6>
-//                                 </div>
-//                             </div>
-//                         </div>
-//   `
-//   totCard.innerHTML = card1; 
-//    isChecked1 = inputfav.checked;
-//   if (isChecked1) {
-     
-//     var card2 = `
-//    <div class="body rounded-4 shadow p-3" style="background-color: #ffffff;">
-//                             <div class="d-flex align-items-center">
-//                                 <div class="position-relative mx-2"
-//                                     style="width: 50px; height: 50px; border-radius: 10px; background-color: #FF8500;">
-//                                     <i class="fa-solid fa-star position-absolute top-50 start-50 translate-middle"
-//                                         style="color: rgb(255, 255, 255);"></i>
-//                                 </div>
-//                                 <div>
-//                                     <h5>Favorites</h5>
-//                                     <h6>${(allcontacts.length)-1}</h6>
-//                                 </div>
-//                             </div>
-//                         </div>
-//   `
-//     favCard.innerHTML = card2;
-      
-
-//   }
-//   allcontacts.splice(index,1)
-//   localStorage.setItem("allcontacts",JSON.stringify(allcontacts))
-//     displayContacts();
-// }
 function deletContact(index) {
-
-  // 1. remove from array first
+ Swal.fire({
+  title: "Delete Contact?",
+  text: `Are you sure you want to delete body? This action cannot be undone.`,
+  icon: "warning",
+   showCancelButton: true,
+    confirmButtonColor: "#d33",
+    cancelButtonColor: "#3085d6",
+    confirmButtonText: "Yes, delete it!"
+}).then((result) => {if (result.isConfirmed) {
   allcontacts.splice(index, 1);
-
-  // 2. save to localStorage
   localStorage.setItem("allcontacts", JSON.stringify(allcontacts));
-
-  // 3. re-render everything
   displayContacts(allcontacts);
-
-  // 4. update total card
   totCard.innerHTML = `
     <div class="body rounded-4 shadow p-3" style="background-color: #ffffff;">
       <div class="d-flex align-items-center">
@@ -451,8 +440,6 @@ function deletContact(index) {
       </div>
     </div>
   `;
-
-  // 5. update favorites card correctly
   let favCount = allcontacts.filter(c => c.fav).length;
 
   favCard.innerHTML = `
@@ -480,27 +467,71 @@ function deletContact(index) {
                                 </div>
                                 <div>
                                     <h5>Emergency</h5>
-                                    <h6>${allcontacts.length}</h6>
+                                    <h6>${emeCount}</h6>
                                 </div>
                             </div>
                         </div>`;
   renderFavSide();
   renderEmeSide();
-   
+    Swal.fire({
+        title: "Deleted!",
+        text: "The contact has been deleted.",
+        icon: "success"
+      });
+    }
+  });
 }
-function updateContact(){
+function updateContact(index){
   console.log("hiiiiupdate")
-   var contact = {
+  
+   currentIndex = index;
+
+  var contact = allcontacts[index];
+
+  inputName.value = contact.name;
+  inputPhone.value = contact.phone;
+  inputEmail.value = contact.email;
+  inputAddress.value = contact.address;
+  inputNote.value = contact.note;
+
+  inputfav.checked = contact.fav;
+  inputeme.checked = contact.eme;
+
+  var myModal = new bootstrap.Modal(document.getElementById('exampleModal'));
+  myModal.show();
+ 
+}
+function saveUpdate() {
+
+  var contact = {
     name: inputName.value,
     phone: inputPhone.value,
     email: inputEmail.value,
     address: inputAddress.value,
     note: inputNote.value,
+    category: contactCategory.value,
     fav: inputfav.checked,
-    eme: inputeme.checked,
+    eme: inputeme.checked
+  };
+
+  if (currentIndex === -1) {
+    allcontacts.push(contact);
+  } else {
+    allcontacts[currentIndex] = contact;
+     Swal.fire({
+  title: "Contact updated!",
+  text: `contact has been updated successfully`,
+  icon: "success"})
+    currentIndex = -1;
   }
-  allcontacts.push(contact)
-  localStorage.setItem("allcontacts",JSON.stringify(allcontacts))
+
+  localStorage.setItem("allcontacts", JSON.stringify(allcontacts));
+
+  displayContacts(allcontacts);
+
+  form.reset();
+
+  bootstrap.Modal.getInstance(document.getElementById('exampleModal')).hide();
 }
 function search(){
     console.log("hiiSearch")
@@ -515,3 +546,48 @@ function search(){
     }
     displayContacts(searchlist)
 }
+
+function validateName(){
+   var regex=/[A-Z][a-z]/
+   if(regex.test(inputName.value)){
+      if(nameAleart.classList.contains("d-block")){
+        nameAleart.classList.replace("d-block","d-none",)
+       }
+   }else{
+    nameAleart.classList.replace("d-none","d-block")
+   }
+}
+
+inputName.addEventListener("blur",function(){
+  validateName()
+})
+
+function validatePhone(){
+   var regex2=/^01(0|1|2|5)[0-9]{8}$/
+   if(regex2.test(inputPhone.value)){
+       if(phoneAleart.classList.contains("d-block")){
+        phoneAleart.classList.replace("d-block","d-none",)
+       }
+   }else{
+    phoneAleart.classList.replace("d-none","d-block")
+   }
+}
+
+inputPhone.addEventListener("blur",function(){
+  validatePhone()
+})
+
+function validateEmail(){
+   var regexemail=/^[^\s@]+@[^\s@]+\.[^\s@]+$/
+   if(regexemail.test(inputEmail.value)){
+     if(emailAleart.classList.contains("d-block")){
+        emailAleart.classList.replace("d-block","d-none",)
+       }
+   }else{
+    emailAleart.classList.replace("d-none","d-block")
+   }
+}
+
+inputEmail.addEventListener("blur",function(){
+  validateEmail()
+})
