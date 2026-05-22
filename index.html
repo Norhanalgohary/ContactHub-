@@ -16,8 +16,8 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body>
-    <nav class="navbar navbar-expand-lg  ">
+<body class="bg-body-tertiary" >
+    <nav class="navbar navbar-expand-lg bg-white ">
         <div class="container p-2" style="width:80% ;">
             <a class="navbar-brand" href="#">
                 <div class="d-flex align-items-center">
@@ -48,18 +48,19 @@
                             </div>
                             <div class="modal-body">
 
-                                <form class=" mx-auto" style="width: 85%;">
+                                <form class=" mx-auto" style="width: 85%;" id="form">
                                     <div class="text-center">
                                         <div
                                             style="width: 90px; height: 90px; border-radius: 50%; background-color: #2266FC; position: relative; margin:auto;">
                                             <i class="fa-solid fa-user fa-xl top-50 start-50 translate-middle"
-                                                style="color: rgb(255, 255, 255); position: absolute;"></i></div>
+                                                style="color: rgb(255, 255, 255); position: absolute;"></i>
+                                        </div>
                                         <div class="mb-3 ">
-                                           
-                                               
-                                                <input type="file" class="form-control w-25 mx-auto mt-3"
+
+
+                                            <input type="file" class="form-control w-25 mx-auto mt-3"
                                                 id="exampleInputfile" placeholder="Choose photo">
-                                            
+
                                         </div>
                                     </div>
                                     <div class="mb-3">
@@ -116,11 +117,13 @@
                                                     style="color: rgb(234, 64, 78);"></i>Emergency</label>
                                         </div>
                                     </div>
-                                    <button type="button" class="btn btn-secondary mb-3" style="width: 49%;">Cancel</button>
-                                    <button onclick="addContact()"  type="button" class="btn btn-primary mb-3 " style="width: 49%;">Save contact</button>
+                                    <button onclick="closeForm()" type="button" class="btn btn-secondary mb-3"
+                                        style="width: 49%;">Cancel</button>
+                                    <button onclick="addContact()" type="button" class="btn btn-primary mb-3 "
+                                        style="width: 49%;">Save contact</button>
                                 </form>
                             </div>
-                         
+
                         </div>
                     </div>
                 </div>
@@ -137,16 +140,7 @@
 
 
 
-
-
-
-
-
-
-
-
-
-    <main class="bg-body-tertiary vh-100  ">
+    <main class="bg-body-tertiary   ">
         <section class="container" style="width:80% ;">
             <div>
                 <div class="row info-cards">
@@ -200,24 +194,24 @@
             <div>
                 <div class="row d-flex justify-content-between">
                     <div class="col-8">
-                        <div class="body " ">
-                            <div class=" all-contacts">
+                        <div class="body " >
+                            <div class=" all-contacts txt-card">
                             <h5>All Contacts</h5>
                             <h6>Manage and organize your 0 contacts</h6>
                         </div>
 
 
                         <div class=" mb-3 rounded-4 my-4">
-                            <input type=" text" class="form-control rounded-4" id="floatingInput"
+                            <input oninput="search()" type=" text" class="form-control rounded-4" id="searchinput"
                                 style="padding: 0.75rem; width: 95%;"
                                 placeholder="    search by name,phone,or email.....">
                             <!-- <label for="floatingInput" class="position-absolute"><i class="fa-solid fa-magnifying-glass me-3"
                                     style="color: #99A1AF; position: absolute; bottom:15px; left: 10px;"></i></label> -->
                         </div>
 
-
-                        <div class="col-6 cards">
-                            <div class="body rounded-4 shadow " style="background-color: #ffffff;">
+                        <div class="row ">
+                        <div class="d-flex flex-wrap cards">
+                            <div class="body rounded-4 shadow col-6 " style="background-color: #ffffff;">
                                 <div class="p-3 ">
                                     <div class="d-flex align-items-center">
                                         <div class="position-relative mx-2"
@@ -297,7 +291,7 @@
                                         </div>
                                         <div class="position-relative   "
                                             style="width: 30px; height: 30px; border-radius: 5px;">
-                                            <i class="fa-solid fa-envelope position-absolute top-50 start-50 translate-middle fa-sm"
+                                            <i onclick="deletContact()" class="fa-solid fa-trash position-absolute top-50 start-50 translate-middle fa-sm"
                                                 style="color: rgb(111, 111, 111);"></i>
                                         </div>
 
@@ -305,7 +299,7 @@
                                 </div>
                             </div>
                         </div>
-
+</div>
                     </div>
 
                 </div>
@@ -326,8 +320,10 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="bg-white p-2 rounded-bottom-4 d-flex justify-content-between p-3 px-3 fav-side">
-                            <div class="d-flex align-items-center ">
+                        
+                        <div class="bg-white p-2 rounded-bottom-4 justify-content-between p-3 px-3 fav-side">
+                            <div class="d-flex align-items-center justify-content-between ">
+                                <div class="d-flex align-items-center">
                                 <div class="position-relative mx-2"
                                     style="width: 50px; height: 50px; border-radius: 10px; background-color: #E227CA;">
 
@@ -340,14 +336,15 @@
                                     <p style=" margin-top: 2px;">01117528853</p>
 
 
-                                </div>
-                            </div>
-                            <div class="position-relative mt-4"
+                                </div></div>
+                                <div class="position-relative mt-4 "
                                 style="width: 30px; height: 30px; border-radius: 5px; background-color: #d0fae5;">
                                 <i class="fa-solid fa-phone position-absolute top-50 start-50 translate-middle fa-2xs"
                                     style="color:#00BC7D;"></i>
 
                             </div>
+                            </div>
+                            
                         </div>
 
 
@@ -370,9 +367,10 @@
                             </div>
 
                         </div>
-                        <div class="bg-white p-2 rounded-bottom-4 d-flex justify-content-between p-3 px-3  eme-side">
+                        <div class="bg-white p-2 rounded-bottom-4 d-block justify-content-between p-3 px-3  eme-side">
 
-                            <div class="d-flex align-items-center ">
+                            <div class="d-flex align-items-center justify-content-between ">
+                                <div class="d-flex align-items-center">
                                 <div class="position-relative mx-2"
                                     style="width: 50px; height: 50px; border-radius: 10px; background-color: #E227CA;">
 
@@ -385,14 +383,15 @@
                                     <p style=" margin-top: 2px;">01117528853</p>
 
 
-                                </div>
-                            </div>
-                            <div class="position-relative mt-4 "
+                                </div></div>
+                                 <div class="position-relative mt-4 ms-5 "
                                 style="width: 30px; height: 30px; border-radius: 5px; background-color: #FFE4E6;">
                                 <i class="fa-solid fa-phone position-absolute top-50 start-50 translate-middle fa-2xs"
                                     style="color:#FF2056;"></i>
 
                             </div>
+                            </div>
+                           
 
                         </div>
 
@@ -405,7 +404,7 @@
         </section>
 
     </main>
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="bootstrap.bundle.min.js"></script>
     <script src="js/main.js"></script>
 </body>
